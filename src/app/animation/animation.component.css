@@ -1,0 +1,32 @@
+
+.box {
+  margin-bottom: 5px;
+  width: 150px;
+  height: 150px;
+  background-color: red;
+  transition:
+    margin-bottom 0s,
+    height 1s 0.1s,
+    background 0.5s 1s;
+}
+
+.box2 {
+  overflow: hidden;
+  width: 150px;
+  height: 0;
+  background-color: orange;
+  transition:
+    background 1s,
+    height 0.5s 1s,
+    margin-bottom 0s 1.5s;
+}
+
+.animate-enter {
+  -webkit-transition: 1s linear all; /* Chrome */
+  transition: 1s linear all;
+  opacity: 0;
+}
+
+.animate-enter.animate-enter-active {
+  opacity: 1;
+}

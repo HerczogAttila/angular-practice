@@ -1,3 +1,10 @@
 <p>
   polc works!
 </p>
+<button (click)="onHello()">hello</button>
+<button (click)="onGetUser('HerczogAttila')">get user</button>
+<p>{{ answerText }}</p>
+<div *ngIf="user">
+  <p>{{ user.login }}</p>
+  <img src="{{ user.avatar_url }}" alt="">
+</div>

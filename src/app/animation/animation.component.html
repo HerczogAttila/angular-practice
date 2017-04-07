@@ -1,10 +1,8 @@
-<p>
-  animation works!
-</p>
 <div style="display: inline" *ngFor="let b of buttons">
   <button (click)="changeType(b)">{{b}}</button>
 </div>
-<div *ngFor="let d of sortDivs | paginate: { itemsPerPage: 10, currentPage: p }" ng-animate="'animate'">
+<div *ngFor="let d of sortDivs" style="display: inline">
   <div (click)="remove(d)" [ngClass]="d.see ? 'box' : 'box2'">{{d.type}}</div>
 </div>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<!--<pagination-controls (pageChange)="p = $event"></pagination-controls>-->
+<!--| paginate: { itemsPerPage: 14, currentPage: p }-->

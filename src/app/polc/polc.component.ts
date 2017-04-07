@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { GitUser } from './json/git-user';
+// import { GitUser } from './json/git-user';
 import { GitRepo } from './json/git-repo';
 import { PolcTest } from './polc-test';
 import { GitAuth } from '../../auth';
@@ -23,10 +23,9 @@ export class PolcComponent implements OnInit {
   // private urlHello = this.urlBase + 'zen';
   private urlUser = this.urlBase + 'users/';
   // private answerText: string;
-  private user: GitUser;
+  // private user: GitUser;
   // private repos: GitRepo[] = [];
   private categories: TestCategory[] = [];
-  private testIndex: number;
   private project1 = 'example';
   // private project2 = 'TLOG16Java';
   // private project3 = 'TLOG16RS';
@@ -57,10 +56,9 @@ export class PolcComponent implements OnInit {
   //   });
   // }
   public onGetUser() {
-    this.getUser(this.name).subscribe((user) => {
-      this.user = user;
-    });
-    this.testIndex = 0;
+    // this.getUser(this.name).subscribe((user) => {
+    //   this.user = user;
+    // });
 
     // this.getRepos(this.name).subscribe((repos) => {
     //   this.repos = repos;
@@ -129,10 +127,10 @@ export class PolcComponent implements OnInit {
   //   return this.http.get(this.urlHello, this.options)
   //     .map(PolcComponent.extractDataText);
   // }
-  private getUser(name: string): Observable<GitUser> {
-    return this.http.get(this.urlUser + name, this.options)
-      .map(PolcComponent.extractDataJson);
-  }
+  // private getUser(name: string): Observable<GitUser> {
+  //   return this.http.get(this.urlUser + name, this.options)
+  //     .map(PolcComponent.extractDataJson);
+  // }
   private getRepos(name: string): Observable<GitRepo[]> {
     return this.http.get(this.urlUser + name + '/repos', this.options)
       .map(PolcComponent.extractDataJson);

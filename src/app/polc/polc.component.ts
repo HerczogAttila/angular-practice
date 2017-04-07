@@ -20,18 +20,20 @@ export class PolcComponent implements OnInit {
   private headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'token ' + GitAuth.token });
   private options = new RequestOptions({ headers: this.headers });
   private urlBase = 'https://api.github.com/';
-  private urlHello = this.urlBase + 'zen';
+  // private urlHello = this.urlBase + 'zen';
   private urlUser = this.urlBase + 'users/';
-  private answerText: string;
+  // private answerText: string;
   private user: GitUser;
   // private repos: GitRepo[] = [];
-  private categorys: TestCategory[] = [];
+  private categories: TestCategory[] = [];
   private testIndex: number;
   private project1 = 'example';
+  // private project2 = 'TLOG16Java';
+  // private project3 = 'TLOG16RS';
 
-  private static extractDataText(response: Response): string {
-    return response.text();
-  }
+  // private static extractDataText(response: Response): string {
+  //   return response.text();
+  // }
 
   private static extractDataJson(response: Response) {
     return JSON.parse(response.text());
@@ -40,20 +42,20 @@ export class PolcComponent implements OnInit {
   constructor(private http: Http) { }
 
   ngOnInit() {
-    this.categorys.push(new TestCategory('1. Lesson: Basic git commands', [
+    this.categories.push(new TestCategory('1. Lesson: Basic git commands', [
       new PolcTest('Create an example GitHub project', this.isExampleProjectCreated),
       new PolcTest('Commit to example project', this.isCommitToExampleProject)
     ]));
 
-    this.categorys.push(new TestCategory('2. Lesson: Using releases & tags', [
+    this.categories.push(new TestCategory('2. Lesson: Using releases & tags', [
       new PolcTest('Tag git branch', this.isTagGitBranch)
     ]));
   }
-  public onHello() {
-    this.getHello().subscribe((data) => {
-      this.answerText = data;
-    });
-  }
+  // public onHello() {
+  //   this.getHello().subscribe((data) => {
+  //     this.answerText = data;
+  //   });
+  // }
   public onGetUser() {
     this.getUser(this.name).subscribe((user) => {
       this.user = user;
@@ -63,7 +65,7 @@ export class PolcComponent implements OnInit {
     // this.getRepos(this.name).subscribe((repos) => {
     //   this.repos = repos;
     // });
-    for (const cat of this.categorys) {
+    for (const cat of this.categories) {
       for (const test of cat.tests) {
         test.test.call(this, test);
       }
@@ -111,10 +113,10 @@ export class PolcComponent implements OnInit {
       });
   }
 
-  private getHello(): Observable<string> {
-    return this.http.get(this.urlHello, this.options)
-      .map(PolcComponent.extractDataText);
-  }
+  // private getHello(): Observable<string> {
+  //   return this.http.get(this.urlHello, this.options)
+  //     .map(PolcComponent.extractDataText);
+  // }
   private getUser(name: string): Observable<GitUser> {
     return this.http.get(this.urlUser + name, this.options)
       .map(PolcComponent.extractDataJson);

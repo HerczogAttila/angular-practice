@@ -1,0 +1,12 @@
+
+.inline {
+  display: inline;
+}
+
+.pass {
+  color: green;
+}
+
+.fail {
+  color: red;
+}

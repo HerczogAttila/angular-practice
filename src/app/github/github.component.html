@@ -1,0 +1,13 @@
+<button (click)="onHello()">hello</button>
+<div>
+  <input type="text" [(ngModel)]="name" placeholder="Github account">
+  <button (click)="onGetUser()">get user</button>
+</div>
+<p>{{ answerText }}</p>
+<div *ngIf="user">
+  <p>{{ user.login }}</p>
+  <img src="{{ user.avatar_url }}" alt="">
+</div>
+<div *ngFor="let repo of repos">
+  <p>{{ repo.name }}: {{ repo.html_url }}</p>
+</div>

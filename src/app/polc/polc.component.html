@@ -1,18 +1,6 @@
-<!--<button (click)="onHello()">hello</button>-->
 <input type="text" [(ngModel)]="name" placeholder="Github account">
 <button (click)="onGetUser()">get user</button>
-<!--<p>{{ answerText }}</p>-->
-<!--<div *ngIf="user">-->
-  <!--<p>{{ user.login }}</p>-->
-  <!--<img src="{{ user.avatar_url }}" alt="">-->
-<!--</div>-->
-<!--<div *ngFor="let repo of repos">-->
-  <!--<p>{{ repo.name }}: {{ repo.html_url }}</p>-->
-<!--</div>-->
 <div *ngIf="user">
-  <!--<p>1. Topic, 1. Lesson: Basic git commands</p>-->
-  <!--<app-polc-test [message]="'-Create an example GitHub project'" [pass]="isExampleProjectCreated()"></app-polc-test>-->
-  <!--<app-polc-test [message]="'-Commit to it'" [pass]="isCommitToExampleProject()"></app-polc-test>-->
   <div *ngFor="let cat of categories">
     <p>{{ cat.title }}</p>
     <div *ngFor="let test of cat.tests">

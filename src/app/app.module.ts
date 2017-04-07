@@ -10,6 +10,7 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { routes } from './app.router';
 import { PolcComponent } from './polc/polc.component';
 import { PolcTestComponent } from './polc/polc-test/polc-test.component';
+import { GithubComponent } from './github/github.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { PolcTestComponent } from './polc/polc-test/polc-test.component';
     AnimationComponent,
     PolcComponent,
     PolcTestComponent,
+    GithubComponent,
   ],
   imports: [
     BrowserModule,

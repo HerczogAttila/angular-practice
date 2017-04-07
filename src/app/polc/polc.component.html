@@ -13,7 +13,10 @@
   <!--<p>1. Topic, 1. Lesson: Basic git commands</p>-->
   <!--<app-polc-test [message]="'-Create an example GitHub project'" [pass]="isExampleProjectCreated()"></app-polc-test>-->
   <!--<app-polc-test [message]="'-Commit to it'" [pass]="isCommitToExampleProject()"></app-polc-test>-->
-  <div *ngFor="let test of tests">
-    <app-polc-test [test]="test"></app-polc-test>
+  <div *ngFor="let cat of categorys">
+    <p>{{ cat.title }}</p>
+    <div *ngFor="let test of cat.tests">
+      <app-polc-test [test]="test"></app-polc-test>
+    </div>
   </div>
 </div>

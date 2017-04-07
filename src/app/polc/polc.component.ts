@@ -76,41 +76,53 @@ export class PolcComponent implements OnInit {
   // Lesson: 1
   public isExampleProjectCreated(test: PolcTest): void {
     this.getRepos(this.name)
-      .subscribe(repos => {
-        for (const repo of repos) {
-          if (repo.name === this.project1) {
-            test.pass = true;
-            return;
+      .subscribe(
+        repos => {
+          for (const repo of repos) {
+            if (repo.name === this.project1) {
+              test.pass = true;
+              return;
+            }
           }
-        }
 
-        test.pass = false;
-      });
+          test.pass = false;
+        },
+        () => {
+          test.pass = false;
+        });
   }
   public isCommitToExampleProject(test: PolcTest): void {
     this.getCommits(this.name, this.project1)
-      .subscribe(commits => {
-        if (commits.length > 0) {
-          test.pass = true;
-          return;
-        }
+      .subscribe(
+        commits => {
+          if (commits.length > 0) {
+            test.pass = true;
+            return;
+          }
 
-        test.pass = false;
-      });
+          test.pass = false;
+        },
+        () => {
+          test.pass = false;
+        });
   }
   // Lesson: 2
   public isTagGitBranch(test: PolcTest) {
     this.getTags(this.name, this.project1)
-      .subscribe(tags => {
-        if (tags.length > 0) {
-          if (tags[0].name.indexOf('0.1.0') > -1) {
-            test.pass = true;
+      .subscribe(
+        tags => {
+          if (tags.length > 0) {
+            if (tags[0].name.indexOf('0.1.0') > -1) {
+              test.pass = true;
+            }
+            return;
           }
-          return;
-        }
 
-        test.pass = false;
-      });
+          test.pass = false;
+        },
+        () => {
+          test.pass = false;
+        });
   }
 
   // private getHello(): Observable<string> {

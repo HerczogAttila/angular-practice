@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { UploadService } from './upload.service';
-import { Http } from '@angular/http';
+// import { UploadService } from './upload.service';
+// import { Http } from '@angular/http';
 // import { escape, unescape } from 'querystring';
 
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css'],
-  providers: [UploadService]
+  // providers: [UploadService]
 })
 export class FileUploadComponent implements OnInit {
   public data: string;
@@ -15,8 +15,8 @@ export class FileUploadComponent implements OnInit {
   public data3: string;
 
   constructor(
-    public service: UploadService,
-    private http: Http,
+    // public service: UploadService,
+    // private http: Http,
   ) {
     /* this.service.progress$.subscribe(
       data => {
@@ -28,7 +28,7 @@ export class FileUploadComponent implements OnInit {
   }
 
   public onChange(e): void {
-    this.data =  e.srcElement.value;
+    // this.data =  e.srcElement.value;
     // const files = e.target.files;
 
     const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
@@ -37,17 +37,17 @@ export class FileUploadComponent implements OnInit {
     reader.onload = this._handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
 
-    console.log(e.target.result);
-
-    console.log('onChange');
-    const files = e.srcElement.files;
-    console.log(files);
-    this.service.makeFileRequest('http://localhost:4200/file_upload', [], files).subscribe(() => {
-      console.log('sent');
-    },
-    err => {
-      console.log(err);
-    });
+    // console.log(e.target.result);
+    //
+    // console.log('onChange');
+    // const files = e.srcElement.files;
+    // console.log(files);
+    // this.service.makeFileRequest('http://localhost:4200/file_upload', [], files).subscribe(() => {
+    //   console.log('sent');
+    // },
+    // err => {
+    //   console.log(err);
+    // });
   }
 
   _handleReaderLoaded(e) {
@@ -57,5 +57,11 @@ export class FileUploadComponent implements OnInit {
     // this.data2 = 'data2: ' + decodeURIComponent(escape(window.atob(file)));
     // this.data3 = 'data3: ' + window.btoa(unescape(encodeURIComponent(file)));
     // this.data2 = window.btoa('asdf');
+  }
+
+  public onSave() {
+    const blob = new Blob(['asdffdsa'], { type: 'text/csv' });
+    const url = window.URL.createObjectURL(blob);
+    window.open(url);
   }
 }

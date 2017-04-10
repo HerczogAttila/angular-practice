@@ -11,6 +11,7 @@ import { routes } from './app.router';
 import { PolcComponent } from './polc/polc.component';
 import { PolcTestComponent } from './polc/polc-test/polc-test.component';
 import { GithubComponent } from './github/github.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { GithubComponent } from './github/github.component';
     PolcComponent,
     PolcTestComponent,
     GithubComponent,
+    FileUploadComponent,
   ],
   imports: [
     BrowserModule,

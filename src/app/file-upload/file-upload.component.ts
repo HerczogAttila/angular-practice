@@ -7,7 +7,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FileUploadComponent implements OnInit {
   public data: string;
-  public allowFileDrop = false;
 
   constructor() { }
 

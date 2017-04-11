@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit {
-  // lineChart
+  // http://valor-software.com/ng2-charts/
   public lineChartData: Array<any> = [];
   public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
     'September', 'October', 'November', 'December'];
@@ -42,21 +42,55 @@ export class ChartsComponent implements OnInit {
   public lineChartLegend = true;
   public lineChartType = 'line';
 
+  public barChartOptions: any = {
+    scaleShowVerticalLines: false,
+    responsive: true
+  };
+  public barChartLabels: string[] = ['2006', '2007', '2008', '2009', '2010', '2011', '2012'];
+  public barChartType = 'bar';
+  public barChartLegend = true;
+
+  public barChartData: any[] = [
+    {data: [65, 59, 80, 81, 56, 55, 40], label: 'Series A'},
+    {data: [28, 48, 40, 19, 86, 27, 90], label: 'Series B'}
+  ];
+
   constructor() { }
 
   ngOnInit() {
     this.randomize();
+    this.randomizeBar();
   }
 
   public randomize(): void {
     const lines = 2;
-    const _lineChartData: Array<any> = new Array(lines);
+    const data: Array<any> = new Array(lines);
     for (let i = 0; i < lines; i++) {
-      _lineChartData[i] = {data: new Array(this.lineChartLabels.length), label: 'Label ' + (i + 1)};
+      data[i] = {data: new Array(this.lineChartLabels.length), label: 'Label ' + (i + 1)};
       for (let j = 0; j < this.lineChartLabels.length; j++) {
-        _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
+        data[i].data[j] = Math.floor((Math.random() * 100) + 1);
       }
     }
-    this.lineChartData = _lineChartData;
+    this.lineChartData = data;
+  }
+
+  public randomizeBar(): void {
+    const max = 100;
+    const groups = 8;
+    const bar = 2;
+    const data = [];
+    let group;
+    this.barChartLabels = [];
+    for (let j = 0; j < groups; j++) {
+      this.barChartLabels.push(2006 + j + '');
+    }
+    for (let i = 0; i < bar; i++) {
+      group = [];
+      for (let j = 0; j < groups; j++) {
+        group.push(Math.round(Math.random() * max));
+      }
+      data.push({ 'data': group, 'label': 'Series ' + (i + 1)});
+    }
+    this.barChartData = data;
   }
 }

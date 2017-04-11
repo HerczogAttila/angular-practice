@@ -11,6 +11,7 @@
       </canvas>
     </div>
   </div>
+  <button (click)="randomize()">Randomize</button>
   <div class="col-md-6" style="margin-bottom: 10px">
     <table class="table table-responsive table-condensed">
       <tr>
@@ -20,6 +21,17 @@
         <td *ngFor="let data of d.data">{{ data }}</td>
       </tr>
     </table>
-    <button (click)="randomize()">CLICK</button>
+  </div>
+  <div>
+    <div style="display: block">
+      <canvas baseChart width="400" height="100"
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+    <button (click)="randomizeBar()">Randomize</button>
   </div>
 </div>

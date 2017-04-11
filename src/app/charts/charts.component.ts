@@ -74,6 +74,23 @@ export class ChartsComponent implements OnInit {
     this.lineChartData = data;
   }
 
+  public randomize2(): void {
+    const days = 31;
+    const lines = 2;
+    const data: Array<any> = new Array(lines);
+    for (let i = 0; i < lines; i++) {
+      data[i] = {data: new Array(days), label: 'Label ' + (i + 1)};
+      data[i].data[0] = 5;
+      for (let j = 1; j < days; j++) {
+        data[i].data[j] = data[i].data[j - 1] + Math.floor((Math.random() * 3) - 1);
+        if (data[i].data[j] < 0) {
+          data[i].data[j] = 0;
+        }
+      }
+    }
+    this.lineChartData = data;
+  }
+
   public randomizeBar(): void {
     const max = 100;
     const groups = 8;

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+// import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 
 const count = 3;
@@ -47,14 +47,14 @@ export class AnimationComponent implements OnInit {
         b.see = !b.see;
       }
     }
-    Observable.timer(1500).subscribe(() => this.removeAll(type));
+    // Observable.timer(1500).subscribe(() => this.removeAll(type));
   }
-  public remove(box: MyBox) {
-    box.onClick();
+  // public remove(box: MyBox) {
+  //   box.onClick();
     // Observable.timer(1500).subscribe(() => this.sortDivs = this.sortDivs.filter(s => s !== box));
-  }
+  // }
 
-  public removeAll(type: number): void {
+  // public removeAll(type: number): void {
     // this.sortDivs = this.sortDivs.filter(s => s.see && s.type !== type);
-  }
+  // }
 }

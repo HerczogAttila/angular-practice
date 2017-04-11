@@ -5,6 +5,7 @@ import { AnimationComponent } from './animation/animation.component';
 import { PolcComponent } from './polc/polc.component';
 import { GithubComponent } from './github/github.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileDownloadComponent } from './file-download/file-download.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'animation', pathMatch: 'full' },
@@ -12,6 +13,7 @@ export const router: Routes = [
   { path: 'polc', component: PolcComponent },
   { path: 'github', component: GithubComponent },
   { path: 'file_upload', component: FileUploadComponent },
+  { path: 'file_download', component: FileDownloadComponent },
   { path: '**', redirectTo: 'animation' },
 ];
 

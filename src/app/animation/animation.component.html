@@ -2,7 +2,7 @@
   <button (click)="changeType(b)">{{b}}</button>
 </div>
 <div *ngFor="let d of sortDivs" style="display: inline">
-  <div (click)="remove(d)" [ngClass]="d.see ? 'box' : 'box2'">{{d.type}}</div>
+  <div (click)="d.onClick()" [ngClass]="d.see ? 'box' : 'box2'">{{d.type}}</div>
 </div>
 <!--<pagination-controls (pageChange)="p = $event"></pagination-controls>-->
 <!--| paginate: { itemsPerPage: 14, currentPage: p }-->

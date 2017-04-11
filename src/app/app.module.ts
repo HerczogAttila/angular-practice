@@ -12,6 +12,7 @@ import { PolcComponent } from './polc/polc.component';
 import { PolcTestComponent } from './polc/polc-test/polc-test.component';
 import { GithubComponent } from './github/github.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileDownloadComponent } from './file-download/file-download.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     PolcTestComponent,
     GithubComponent,
     FileUploadComponent,
+    FileDownloadComponent,
   ],
   imports: [
     BrowserModule,

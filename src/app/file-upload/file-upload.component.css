@@ -1,0 +1,24 @@
+
+.fileUpload {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  overflow: hidden;
+  border: dashed 1px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  margin-top: 15px;
+}
+.fileUpload input.upload {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  top: 0;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}

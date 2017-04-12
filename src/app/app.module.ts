@@ -17,6 +17,10 @@ import { ChartsComponent } from './charts/charts.component';
 import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
 import { HeroService } from './reactive-forms/hero.service';
 import { HeroListComponent } from './reactive-forms/hero-list.component';
+import { PipesComponent } from './pipes/pipes.component';
+import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
+import { FlyingHeroesPipe } from './pipes/flying-heroes.pipe';
+import { FlyingHeroesImpurePipe } from './pipes/flying-heroes-impure.pipe';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,10 @@ import { HeroListComponent } from './reactive-forms/hero-list.component';
     ChartsComponent,
     ReactiveFormsComponent,
     HeroListComponent,
+    PipesComponent,
+    ExponentialStrengthPipe,
+    FlyingHeroesPipe,
+    FlyingHeroesImpurePipe,
   ],
   imports: [
     BrowserModule,

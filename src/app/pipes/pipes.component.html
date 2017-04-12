@@ -1,0 +1,40 @@
+<p>{{ birthday }}</p>
+<p>The hero's birthday is {{ birthday | date }}</p>
+<p>The hero's birthday is {{ birthday | date:"yyyy. MMMM. dd." }} </p>
+
+<p>The hero's birthday is {{ birthday | date:format }}</p>
+<button (click)="toggleFormat()">Toggle Format</button>
+
+<p>The chained hero's birthday is
+  {{ birthday | date | uppercase}}</p>
+
+<p>The chained hero's birthday is
+  {{  birthday | date:'fullDate' | uppercase}}</p>
+
+<p>Super power boost: {{3 | exponentialStrength: 3}}</p>
+
+<h2>Power Boost Calculator</h2>
+<div>Normal power: <input placeholder="power" [(ngModel)]="power"></div>
+<div>Boost factor: <input placeholder="factor" [(ngModel)]="factor"></div>
+<p>
+  Super Hero Power: {{power | exponentialStrength: factor}}
+</p>
+
+New hero:
+<input type="text" #box
+       (keyup.enter)="addHero(box.value); box.value=''"
+       placeholder="hero name">
+<button (click)="reset()">Reset</button>
+<div *ngFor="let hero of heroes">
+  {{hero.name}}
+</div>
+
+<p>Pure pipe:</p>
+<div *ngFor="let hero of (heroes | flyingHeroes)">
+  {{hero.name}}
+</div>
+
+<p>Impure pipe:</p>
+<div *ngFor="let hero of (heroes | flyingHeroesImpure)">
+  {{hero.name}}
+</div>

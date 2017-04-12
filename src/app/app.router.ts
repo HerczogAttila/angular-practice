@@ -7,6 +7,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileDownloadComponent } from './file-download/file-download.component';
 import { ChartsComponent } from './charts/charts.component';
 import { HeroListComponent } from './reactive-forms/hero-list.component';
+import { PipesComponent } from './pipes/pipes.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'animation', pathMatch: 'full' },
@@ -17,6 +18,7 @@ export const router: Routes = [
   { path: 'file_download', component: FileDownloadComponent },
   { path: 'charts', component: ChartsComponent },
   { path: 'reactive_forms', component: HeroListComponent },
+  { path: 'pipes', component: PipesComponent },
   { path: '**', redirectTo: 'animation' },
 ];
 

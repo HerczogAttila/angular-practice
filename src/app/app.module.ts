@@ -25,6 +25,7 @@ import { AsyncMessageComponent } from './async-message/async-message.component';
 import { FetchJsonPipe } from './pipes/fetch-json.pipe';
 import { AsyncSearchComponent } from './async-search/async-search.component';
 import { SearchService } from './async-search/search.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { SearchService } from './async-search/search.service';
     AsyncMessageComponent,
     FetchJsonPipe,
     AsyncSearchComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,

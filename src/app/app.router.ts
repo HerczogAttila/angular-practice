@@ -1,4 +1,4 @@
-import { RouterModule, Routes } from '@angular/router';
+import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { AnimationComponent } from './animation/animation.component';
 import { PolcComponent } from './polc/polc.component';
@@ -23,8 +23,9 @@ export const router: Routes = [
   { path: 'reactive_forms', component: HeroListComponent },
   { path: 'pipes', component: PipesComponent },
   { path: 'async_message', component: AsyncMessageComponent },
+  // { path: 'async_search', loadChildren: 'app/async-search/async-search.module#AsyncSearchModule' },
   { path: 'async_search', component: AsyncSearchComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 
-export const routes: ModuleWithProviders = RouterModule.forRoot(router);
+export const routes: ModuleWithProviders = RouterModule.forRoot(router, { preloadingStrategy: PreloadAllModules });

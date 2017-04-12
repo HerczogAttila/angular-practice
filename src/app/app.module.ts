@@ -21,6 +21,8 @@ import { PipesComponent } from './pipes/pipes.component';
 import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
 import { FlyingHeroesPipe } from './pipes/flying-heroes.pipe';
 import { FlyingHeroesImpurePipe } from './pipes/flying-heroes-impure.pipe';
+import { AsyncMessageComponent } from './async-message/async-message.component';
+import { FetchJsonPipe } from './pipes/fetch-json.pipe';
 
 @NgModule({
   declarations: [
@@ -39,6 +41,8 @@ import { FlyingHeroesImpurePipe } from './pipes/flying-heroes-impure.pipe';
     ExponentialStrengthPipe,
     FlyingHeroesPipe,
     FlyingHeroesImpurePipe,
+    AsyncMessageComponent,
+    FetchJsonPipe,
   ],
   imports: [
     BrowserModule,

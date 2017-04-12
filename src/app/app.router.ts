@@ -9,6 +9,7 @@ import { ChartsComponent } from './charts/charts.component';
 import { HeroListComponent } from './reactive-forms/hero-list.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { AsyncMessageComponent } from './async-message/async-message.component';
+import { AsyncSearchComponent } from './async-search/async-search.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'animation', pathMatch: 'full' },
@@ -21,6 +22,7 @@ export const router: Routes = [
   { path: 'reactive_forms', component: HeroListComponent },
   { path: 'pipes', component: PipesComponent },
   { path: 'async_message', component: AsyncMessageComponent },
+  { path: 'async_search', component: AsyncSearchComponent },
   { path: '**', redirectTo: 'animation' },
 ];
 

@@ -23,6 +23,8 @@ import { FlyingHeroesPipe } from './pipes/flying-heroes.pipe';
 import { FlyingHeroesImpurePipe } from './pipes/flying-heroes-impure.pipe';
 import { AsyncMessageComponent } from './async-message/async-message.component';
 import { FetchJsonPipe } from './pipes/fetch-json.pipe';
+import { AsyncSearchComponent } from './async-search/async-search.component';
+import { SearchService } from './async-search/search.service';
 
 @NgModule({
   declarations: [
@@ -43,6 +45,7 @@ import { FetchJsonPipe } from './pipes/fetch-json.pipe';
     FlyingHeroesImpurePipe,
     AsyncMessageComponent,
     FetchJsonPipe,
+    AsyncSearchComponent,
   ],
   imports: [
     BrowserModule,
@@ -53,7 +56,10 @@ import { FetchJsonPipe } from './pipes/fetch-json.pipe';
     ChartsModule,
     ReactiveFormsModule,
   ],
-  providers: [HeroService],
+  providers: [
+    HeroService,
+    SearchService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

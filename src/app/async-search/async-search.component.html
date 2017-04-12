@@ -1,0 +1,9 @@
+<div id="search-component">
+  <h4>Hero Search</h4>
+  <input [(ngModel)]="term" (keyup)="onSearch()" />
+  <div>
+    <div *ngFor="let word of words | async" (click)="onClick(word)" class="search-result">
+      {{word}}
+    </div>
+  </div>
+</div>

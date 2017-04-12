@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { AnimationComponent } from './animation/animation.component';
@@ -14,6 +14,9 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileDownloadComponent } from './file-download/file-download.component';
 import { ChartsModule } from 'ng2-charts';
 import { ChartsComponent } from './charts/charts.component';
+import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
+import { HeroService } from './reactive-forms/hero.service';
+import { HeroListComponent } from './reactive-forms/hero-list.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +29,8 @@ import { ChartsComponent } from './charts/charts.component';
     FileUploadComponent,
     FileDownloadComponent,
     ChartsComponent,
+    ReactiveFormsComponent,
+    HeroListComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,8 +39,9 @@ import { ChartsComponent } from './charts/charts.component';
     routes,
     Ng2PaginationModule,
     ChartsModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [HeroService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

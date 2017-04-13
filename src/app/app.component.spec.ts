@@ -1,12 +1,7 @@
 import { TestBed, async } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NavigationComponent } from './navigation/navigation.component';
-import { Router, RouterOutlet } from '@angular/router';
-import { RouterTestingModule } from '@angular/router/testing';
-
-class RouterStub {
-  // navigateByUrl(url: string) { return url; }
-}
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
@@ -15,11 +10,9 @@ describe('AppComponent', () => {
         AppComponent,
         NavigationComponent,
       ],
-      providers: [
-        {provide: Router,  useClass: RouterStub },
-        RouterOutlet
+      schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
       ],
-      imports: [ RouterTestingModule ]
     }).compileComponents();
   }));
 

@@ -8,8 +8,12 @@ describe('PolcTestComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [ FormsModule ],
-      declarations: [ PolcTestComponent ]
+      imports: [
+        FormsModule,
+      ],
+      declarations: [
+        PolcTestComponent,
+      ]
     })
     .compileComponents();
   }));

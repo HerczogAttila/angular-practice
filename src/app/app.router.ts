@@ -12,6 +12,7 @@ import { AsyncMessageComponent } from './async-message/async-message.component';
 import { AsyncSearchComponent } from './async-search/async-search.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MultiselectComponent } from './multiselect/multiselect.component';
+import { Multiselect2Component } from './multiselect2/multiselect2.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'animation', pathMatch: 'full' },
@@ -27,6 +28,7 @@ export const router: Routes = [
   // { path: 'async_search', loadChildren: 'app/async-search/async-search.module#AsyncSearchModule' },
   { path: 'async_search', component: AsyncSearchComponent },
   { path: 'multi_select', component: MultiselectComponent },
+  { path: 'multi_select2', component: Multiselect2Component },
   { path: '**', component: PageNotFoundComponent },
 ];
 

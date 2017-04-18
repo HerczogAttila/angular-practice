@@ -28,6 +28,7 @@ import { SearchService } from './async-search/search.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MultiselectComponent } from './multiselect/multiselect.component';
 import { SelectModule } from 'ng2-select';
+import { Multiselect2Component } from './multiselect2/multiselect2.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { SelectModule } from 'ng2-select';
     AsyncSearchComponent,
     PageNotFoundComponent,
     MultiselectComponent,
+    Multiselect2Component,
   ],
   imports: [
     BrowserModule,

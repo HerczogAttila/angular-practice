@@ -34,4 +34,13 @@ describe('AppComponent', () => {
     const compiled = fixture.debugElement.nativeElement;
     expect(compiled.querySelector('h1').textContent).toContain('Angular practice project!');
   }));
+
+  it('should display a different test title', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.debugElement.componentInstance;
+    app.title = 'Test Title';
+    const compiled = fixture.debugElement.nativeElement;
+    fixture.detectChanges();
+    expect(compiled.textContent).toContain('Test Title');
+  });
 });

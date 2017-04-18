@@ -2,10 +2,9 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { PolcComponent } from './polc.component';
 import { FormsModule } from '@angular/forms';
-import { PolcTestComponent } from "./polc-test/polc-test.component";
-import { BaseRequestOptions, Http } from "@angular/http";
-import { MockBackend } from "@angular/http/testing";
-import { PolcTest } from "./polc-test";
+import { PolcTestComponent } from './polc-test/polc-test.component';
+import { BaseRequestOptions, Http } from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 describe('PolcComponent', () => {
   let component: PolcComponent;

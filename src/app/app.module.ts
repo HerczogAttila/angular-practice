@@ -26,6 +26,8 @@ import { FetchJsonPipe } from './pipes/fetch-json.pipe';
 import { AsyncSearchComponent } from './async-search/async-search.component';
 import { SearchService } from './async-search/search.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MultiselectComponent } from './multiselect/multiselect.component';
+import { SelectModule } from 'ng2-select';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FetchJsonPipe,
     AsyncSearchComponent,
     PageNotFoundComponent,
+    MultiselectComponent,
   ],
   imports: [
     BrowserModule,
@@ -57,6 +60,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     Ng2PaginationModule,
     ChartsModule,
     ReactiveFormsModule,
+    SelectModule,
   ],
   providers: [
     HeroService,

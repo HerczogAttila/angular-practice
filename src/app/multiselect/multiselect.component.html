@@ -1,0 +1,19 @@
+<div class="selectType">
+  <p>Single select:</p>
+  <ng-select [allowClear]="true"
+             [items]="items"
+             [disabled]="disabled"
+             (data)="refreshValue($event)"
+             placeholder="No city selected">
+  </ng-select>
+</div>
+
+<div class="selectType">
+  <p>Multiple select:</p>
+  <ng-select  [multiple]="true"
+              [items]="items"
+              [disabled]="disabled"
+              (data)="refreshValue($event)"
+              placeholder="No city selected">
+  </ng-select>
+</div>

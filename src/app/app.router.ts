@@ -11,6 +11,7 @@ import { PipesComponent } from './pipes/pipes.component';
 import { AsyncMessageComponent } from './async-message/async-message.component';
 import { AsyncSearchComponent } from './async-search/async-search.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { MultiselectComponent } from './multiselect/multiselect.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'animation', pathMatch: 'full' },
@@ -25,6 +26,7 @@ export const router: Routes = [
   { path: 'async_message', component: AsyncMessageComponent },
   // { path: 'async_search', loadChildren: 'app/async-search/async-search.module#AsyncSearchModule' },
   { path: 'async_search', component: AsyncSearchComponent },
+  { path: 'multi_select', component: MultiselectComponent },
   { path: '**', component: PageNotFoundComponent },
 ];
 

@@ -9,8 +9,7 @@ describe('FileDownloadComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ FileDownloadComponent ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

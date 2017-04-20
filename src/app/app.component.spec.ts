@@ -13,7 +13,7 @@ describe('AppComponent', () => {
       schemas: [
         CUSTOM_ELEMENTS_SCHEMA
       ],
-    }).compileComponents();
+    });
   }));
 
   it('should create the app', async(() => {

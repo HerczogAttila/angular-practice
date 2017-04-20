@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { Multiselect2Component } from './multiselect2.component';
+import { FormsModule } from '@angular/forms';
 
 describe('Multiselect2Component', () => {
   let component: Multiselect2Component;
@@ -8,9 +9,9 @@ describe('Multiselect2Component', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [ FormsModule ],
       declarations: [ Multiselect2Component ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

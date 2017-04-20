@@ -23,8 +23,7 @@ describe('AsyncSearchComponent', () => {
         MockBackend,
         BaseRequestOptions
       ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

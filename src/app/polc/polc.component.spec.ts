@@ -28,8 +28,7 @@ describe('PolcComponent', () => {
         MockBackend,
         BaseRequestOptions
       ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

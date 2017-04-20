@@ -6,7 +6,7 @@
 
 <!--<h2>Hero Detail</h2>-->
 <!--<h3><i>FormControl in a FormGroup</i></h3>-->
-<form [formGroup]="heroForm" (ngSubmit)="onSubmit()" novalidate>
+<form *ngIf="hero" [formGroup]="heroForm" (ngSubmit)="onSubmit()" novalidate>
   <div style="margin-bottom: 1em">
     <button type="submit"
             [disabled]="heroForm.pristine" class="btn btn-success">Save</button> &nbsp;

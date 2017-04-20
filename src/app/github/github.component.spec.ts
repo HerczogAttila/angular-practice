@@ -23,8 +23,7 @@ describe('GithubComponent', () => {
         MockBackend,
         BaseRequestOptions
       ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

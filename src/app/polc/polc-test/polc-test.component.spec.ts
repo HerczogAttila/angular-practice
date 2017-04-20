@@ -14,8 +14,7 @@ describe('PolcTestComponent', () => {
       declarations: [
         PolcTestComponent,
       ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

@@ -21,8 +21,7 @@ describe('ReactiveFormsComponent', () => {
       providers: [
         HeroService
       ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

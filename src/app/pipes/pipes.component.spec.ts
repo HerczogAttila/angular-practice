@@ -27,8 +27,7 @@ describe('PipesComponent', () => {
         MockBackend,
         BaseRequestOptions,
       ]
-    })
-    .compileComponents();
+    });
   }));
 
   beforeEach(() => {

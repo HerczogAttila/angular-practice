@@ -23,7 +23,7 @@ export class AsyncSearchComponent implements OnInit {
 
   ngOnInit() {
     this.words = this.searchTerms
-      .debounceTime(500)
+      .debounceTime(750)
       .distinctUntilChanged()
       .switchMap(term => term
         ? this.searchService.search(term)

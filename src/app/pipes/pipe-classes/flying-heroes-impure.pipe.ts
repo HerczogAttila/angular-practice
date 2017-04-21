@@ -5,4 +5,4 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'flyingHeroesImpure',
   pure: false
 })
-export class FlyingHeroesImpurePipe extends FlyingHeroesPipe implements PipeTransform {}
+export class FlyingHeroesImpurePipe extends FlyingHeroesPipe implements PipeTransform { }

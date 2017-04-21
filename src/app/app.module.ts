@@ -18,17 +18,18 @@ import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.componen
 import { HeroService } from './reactive-forms/hero.service';
 import { HeroListComponent } from './reactive-forms/hero-list.component';
 import { PipesComponent } from './pipes/pipes.component';
-import { ExponentialStrengthPipe } from './pipes/exponential-strength.pipe';
-import { FlyingHeroesPipe } from './pipes/flying-heroes.pipe';
-import { FlyingHeroesImpurePipe } from './pipes/flying-heroes-impure.pipe';
+import { ExponentialStrengthPipe } from './pipes/pipe-classes/exponential-strength.pipe';
+import { FlyingHeroesPipe } from './pipes/pipe-classes/flying-heroes.pipe';
+import { FlyingHeroesImpurePipe } from './pipes/pipe-classes/flying-heroes-impure.pipe';
 import { AsyncMessageComponent } from './async-message/async-message.component';
-import { FetchJsonPipe } from './pipes/fetch-json.pipe';
+import { FetchJsonPipe } from './pipes/pipe-classes/fetch-json.pipe';
 import { AsyncSearchComponent } from './async-search/async-search.component';
 import { SearchService } from './async-search/search.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MultiselectComponent } from './multiselect/multiselect.component';
 import { SelectModule } from 'ng2-select';
 import { Multiselect2Component } from './multiselect2/multiselect2.component';
+import { HeroComponent } from './pipes/hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { Multiselect2Component } from './multiselect2/multiselect2.component';
     PageNotFoundComponent,
     MultiselectComponent,
     Multiselect2Component,
+    HeroComponent,
   ],
   imports: [
     BrowserModule,

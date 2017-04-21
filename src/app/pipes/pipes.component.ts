@@ -1,37 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { HEROES } from './heroes';
+import { Component } from '@angular/core';
+import { Hero, HEROES } from './classes/hero';
 
 @Component({
   selector: 'app-pipes',
   templateUrl: './pipes.component.html',
   styleUrls: ['./pipes.component.css']
 })
-export class PipesComponent implements OnInit {
+export class PipesComponent {
   public birthday = new Date(1988, 3, 15);
-  public toggle = true; // start with true == shortDate
+  public toggle = true;
+  get format() { return this.toggle ? 'shortDate' : 'fullDate'; }
 
   public power = 5;
-  public factor = 1;
+  public factor = 3;
 
-  heroes: any[] = [];
-  canFly = true;
-
-  get format() { return this.toggle ? 'shortDate' : 'fullDate'; }
-  toggleFormat() { this.toggle = !this.toggle; }
+  public heroes: Hero[] = [];
+  public heroName = '';
+  public canFly = true;
 
   constructor() {
     this.reset();
   }
 
-  ngOnInit() {
+  public toggleFormat(): void {
+    this.toggle = !this.toggle;
   }
 
-  addHero(name: string) {
-    name = name.trim();
-    if (!name) { return; }
-    const hero = {name, canFly: this.canFly};
-    this.heroes.push(hero);
+  public addHero(): void {
+    if (!this.heroName) {
+      return;
+    }
+
+    this.heroes.push(new Hero(this.heroName, this.canFly));
+    this.heroName = '';
   }
 
-  reset() { this.heroes = HEROES.slice(); }
+  public reset(): void {
+    this.heroes = HEROES.slice();
+  }
 }

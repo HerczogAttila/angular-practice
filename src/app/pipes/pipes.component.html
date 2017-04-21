@@ -1,48 +1,31 @@
 <p>{{ birthday }}</p>
 <p>The hero's birthday is {{ birthday | date }}</p>
-<p>The hero's birthday is {{ birthday | date:"yyyy. MMMM. dd." }} </p>
-
-<p>The hero's birthday is {{ birthday | date:format }}</p>
+<p>The hero's birthday is {{ birthday | date:"yyyy. MMMM. dd." }}</p>
 <button (click)="toggleFormat()">Toggle Format</button>
-
-<p>The chained hero's birthday is
-  {{ birthday | date | uppercase}}</p>
-
-<p>The chained hero's birthday is
-  {{  birthday | date:'fullDate' | uppercase}}</p>
-
-<p>Super power boost: {{3 | exponentialStrength: 3}}</p>
+<p class="inline">The hero's birthday is {{ birthday | date:format }}</p>
+<p>The chained hero's birthday is {{ birthday | date | uppercase }}</p>
+<p>The chained hero's birthday is {{  birthday | date:'fullDate' | uppercase }}</p>
 
 <h2>Power Boost Calculator</h2>
+<p>Super power boost: {{ 3 | exponentialStrength: 3 }}</p>
 <div>Normal power: <input placeholder="power" [(ngModel)]="power"></div>
 <div>Boost factor: <input placeholder="factor" [(ngModel)]="factor"></div>
-<p>
-  Super Hero Power: {{power | exponentialStrength: factor}}
-</p>
+<p>Super Hero Power: {{ power | exponentialStrength: factor }}</p>
 
-New hero:
-<input type="text" #box
-       (keyup.enter)="addHero(box.value); box.value=''"
-       placeholder="hero name">
-<button (click)="reset()">Reset</button>
-<div *ngFor="let hero of heroes">
-  {{hero.name}}
+<div>
+  New hero:
+  <input type="text" [(ngModel)]="heroName" (keyup.enter)="addHero()" placeholder="hero name">
+  <input type="checkbox" [(ngModel)]="canFly" placeholder="can fly">Can fly
+  <button (click)="reset()">Reset</button>
 </div>
+<app-hero *ngFor="let hero of heroes" [hero]="hero"></app-hero>
 
-<p>Pure pipe:</p>
-<div *ngFor="let hero of (heroes | flyingHeroes)">
-  {{hero.name}}
-</div>
+<p>Pure pipe(Flying heroes):</p>
+<p *ngFor="let hero of (heroes | flyingHeroes)">{{ hero.name }}</p>
 
-<p>Impure pipe:</p>
-<div *ngFor="let hero of (heroes | flyingHeroesImpure)">
-  {{hero.name}}
-</div>
+<p>Impure pipe(Flying heroes):</p>
+<p *ngFor="let hero of (heroes | flyingHeroesImpure)">{{ hero.name }}</p>
 
 <h2>Heroes from JSON File</h2>
-<div *ngFor="let hero of ('heroes.json' | fetch) ">
-  {{hero.name}}
-</div>
-<p>Heroes as JSON:
-  {{'heroes.json' | fetch | json}}
-</p>
+<p *ngFor="let hero of ('heroes.json' | fetch) ">{{ hero.name }}</p>
+<p>Heroes as JSON: {{ 'heroes.json' | fetch | json }}</p>

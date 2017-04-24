@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PipesComponent } from './pipes.component';
 import { FormsModule } from '@angular/forms';
-import { ExponentialStrengthPipe } from './pipe-classes/exponential-strength.pipe';
-import { FlyingHeroesPipe } from './pipe-classes/flying-heroes.pipe';
-import { FlyingHeroesImpurePipe } from './pipe-classes/flying-heroes-impure.pipe';
-import { FetchJsonPipe } from './pipe-classes/fetch-json.pipe';
+import { ExponentialStrengthPipe } from '../shared/pipes/exponential-strength.pipe';
+import { FlyingHeroesPipe } from '../shared/pipes/flying-heroes.pipe';
+import { FlyingHeroesImpurePipe } from '../shared/pipes/flying-heroes-impure.pipe';
+import { FetchJsonPipe } from '../shared/pipes/fetch-json.pipe';
 import { BaseRequestOptions, HttpModule } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 import { By } from '@angular/platform-browser';

@@ -6,7 +6,7 @@ import { GithubComponent } from './github/github.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileDownloadComponent } from './file-download/file-download.component';
 import { ChartsComponent } from './charts/charts.component';
-import { HeroListComponent } from './reactive-forms/hero-list.component';
+import { HeroListComponent } from './hero-list/hero-list.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { AsyncMessageComponent } from './async-message/async-message.component';
 import { AsyncSearchComponent } from './async-search/async-search.component';

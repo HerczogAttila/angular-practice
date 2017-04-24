@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./charts.component.css']
 })
 export class ChartsComponent implements OnInit {
-  // http://valor-software.com/ng2-charts/
   public lineChartData: Array<any> = [];
   public lineChartLabels: Array<any> = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August',
     'September', 'October', 'November', 'December'];
@@ -69,23 +68,6 @@ export class ChartsComponent implements OnInit {
       data[i] = {data: new Array(this.lineChartLabels.length), label: 'Label ' + (i + 1)};
       for (let j = 0; j < this.lineChartLabels.length; j++) {
         data[i].data[j] = Math.floor((Math.random() * 100) + 1);
-      }
-    }
-    this.lineChartData = data;
-  }
-
-  public randomize2(): void {
-    const days = 31;
-    const lines = 2;
-    const data: Array<any> = new Array(lines);
-    for (let i = 0; i < lines; i++) {
-      data[i] = {data: new Array(days), label: 'Label ' + (i + 1)};
-      data[i].data[0] = 5;
-      for (let j = 1; j < days; j++) {
-        data[i].data[j] = data[i].data[j - 1] + Math.floor((Math.random() * 3) - 1);
-        if (data[i].data[j] < 0) {
-          data[i].data[j] = 0;
-        }
       }
     }
     this.lineChartData = data;

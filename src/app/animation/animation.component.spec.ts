@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AnimationComponent } from './animation.component';
+import { MyBoxComponent } from './my-box/my-box.component';
 
 describe('AnimationComponent', () => {
   let component: AnimationComponent;
@@ -8,7 +9,10 @@ describe('AnimationComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AnimationComponent ]
+      declarations: [
+        AnimationComponent,
+        MyBoxComponent,
+      ]
     });
   }));
 

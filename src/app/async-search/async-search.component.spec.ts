@@ -4,9 +4,10 @@ import { FormsModule } from '@angular/forms';
 import { BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
 
+let comp: AsyncSearchComponent;
+let fixture: ComponentFixture<AsyncSearchComponent>;
+
 describe('AsyncSearchComponent', () => {
-  let component: AsyncSearchComponent;
-  let fixture: ComponentFixture<AsyncSearchComponent>;
   const mockHttpProvider = {
     deps: [ MockBackend, BaseRequestOptions ],
     useFactory: (backend: MockBackend, defaultOptions: BaseRequestOptions) => {
@@ -23,16 +24,36 @@ describe('AsyncSearchComponent', () => {
         MockBackend,
         BaseRequestOptions
       ]
-    });
+    })
+    .compileComponents()
+    .then(createComponent);
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AsyncSearchComponent);
-    component = fixture.componentInstance;
+    comp = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(comp).toBeTruthy();
+  });
+
+  it('searchTerms', () => {
+    comp.term = 'asd';
+    comp.onSearch();
+  });
+
+  it('onClick', () => {
+    comp.term = 'asd';
+    comp.onClick('dryasdust');
+    expect(comp.term).toBe('dryasdust');
   });
 });
+
+function createComponent() {
+  fixture = TestBed.createComponent(AsyncSearchComponent);
+  comp = fixture.componentInstance;
+
+  fixture.detectChanges();
+}

@@ -2,7 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ReactiveFormsComponent } from './reactive-forms.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HeroService } from './hero.service';
+import { HeroService } from '../../shared/services/hero.service';
 
 describe('ReactiveFormsComponent', () => {
   let component: ReactiveFormsComponent;

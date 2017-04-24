@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Hero } from '../classes/hero';
+import { Hero } from '../../shared/classes/pipes/hero';
 
 @Component({
   selector: 'app-hero',

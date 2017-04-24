@@ -1,4 +1,4 @@
-import { HEROES } from '../classes/hero';
+import { HEROES } from '../classes/pipes/hero';
 import { FlyingHeroesImpurePipe } from './flying-heroes-impure.pipe';
 
 describe('FlyingHeroesImpurePipe', () => {

@@ -14,22 +14,23 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileDownloadComponent } from './file-download/file-download.component';
 import { ChartsModule } from 'ng2-charts';
 import { ChartsComponent } from './charts/charts.component';
-import { ReactiveFormsComponent } from './reactive-forms/reactive-forms.component';
-import { HeroService } from './reactive-forms/hero.service';
-import { HeroListComponent } from './reactive-forms/hero-list.component';
+import { ReactiveFormsComponent } from './hero-list/reactive-forms/reactive-forms.component';
+import { HeroService } from './shared/services/hero.service';
+import { HeroListComponent } from './hero-list/hero-list.component';
 import { PipesComponent } from './pipes/pipes.component';
-import { ExponentialStrengthPipe } from './pipes/pipe-classes/exponential-strength.pipe';
-import { FlyingHeroesPipe } from './pipes/pipe-classes/flying-heroes.pipe';
-import { FlyingHeroesImpurePipe } from './pipes/pipe-classes/flying-heroes-impure.pipe';
+import { ExponentialStrengthPipe } from './shared/pipes/exponential-strength.pipe';
+import { FlyingHeroesPipe } from './shared/pipes/flying-heroes.pipe';
+import { FlyingHeroesImpurePipe } from './shared/pipes/flying-heroes-impure.pipe';
 import { AsyncMessageComponent } from './async-message/async-message.component';
-import { FetchJsonPipe } from './pipes/pipe-classes/fetch-json.pipe';
+import { FetchJsonPipe } from './shared/pipes/fetch-json.pipe';
 import { AsyncSearchComponent } from './async-search/async-search.component';
-import { SearchService } from './async-search/search.service';
+import { SearchService } from './shared/services/search.service';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MultiselectComponent } from './multiselect/multiselect.component';
 import { SelectModule } from 'ng2-select';
 import { Multiselect2Component } from './multiselect2/multiselect2.component';
 import { HeroComponent } from './pipes/hero/hero.component';
+import { MyBoxComponent } from './animation/my-box/my-box.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { HeroComponent } from './pipes/hero/hero.component';
     MultiselectComponent,
     Multiselect2Component,
     HeroComponent,
+    MyBoxComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { Flyer } from '../classes/flyer';
+import { Flyer } from '../classes/pipes/flyer';
 
 @Pipe({ name: 'flyingHeroes' })
 export class FlyingHeroesPipe implements PipeTransform {

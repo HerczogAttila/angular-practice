@@ -3,7 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { FileUploadComponent } from './file-upload.component';
 
 describe('FileUploadComponent', () => {
-  let component: FileUploadComponent;
+  let comp: FileUploadComponent;
   let fixture: ComponentFixture<FileUploadComponent>;
 
   beforeEach(async(() => {
@@ -14,11 +14,11 @@ describe('FileUploadComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(FileUploadComponent);
-    component = fixture.componentInstance;
+    comp = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(comp).toBeTruthy();
   });
 });

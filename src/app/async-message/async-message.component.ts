@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/timer';
 import 'rxjs/add/operator/map';
@@ -9,8 +9,10 @@ import 'rxjs/add/operator/take';
   templateUrl: './async-message.component.html',
   styleUrls: ['./async-message.component.css']
 })
-export class AsyncMessageComponent implements OnInit {
-  message$: Observable<string>;
+export class AsyncMessageComponent {
+  public message$: Observable<string>;
+  public wait = 1500;
+
   private messages = [
     'You are my hero!',
     'You are the best hero!',
@@ -19,11 +21,8 @@ export class AsyncMessageComponent implements OnInit {
 
   constructor() { this.resend(); }
 
-  ngOnInit() {
-  }
-
-  resend() {
-    this.message$ = Observable.timer(1500, 1500)
+  public resend(): void {
+    this.message$ = Observable.timer(0, this.wait)
       .map(i => this.messages[i])
       .take(this.messages.length);
   }

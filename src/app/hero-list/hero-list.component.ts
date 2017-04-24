@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from './data-model';
-import { HeroService } from './hero.service';
+import { HeroService } from '../shared/services/hero.service';
 import { Observable } from 'rxjs/Observable';
+import { Hero } from '../shared/classes/reactive-forms/hero';
 import 'rxjs/add/operator/finally';
 
 @Component({
   selector: 'app-hero-list',
   templateUrl: './hero-list.component.html',
-  styleUrls: ['./reactive-forms.component.css']
+  styleUrls: ['./hero-list.component.css']
 })
 export class HeroListComponent implements OnInit {
   heroes: Observable<Hero[]>;

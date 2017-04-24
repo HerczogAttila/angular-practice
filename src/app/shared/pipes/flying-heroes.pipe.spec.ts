@@ -1,5 +1,5 @@
 import { FlyingHeroesPipe } from './flying-heroes.pipe';
-import { HEROES } from '../classes/hero';
+import { HEROES } from '../classes/pipes/hero';
 
 describe('FlyingHeroesPipe', () => {
   const pipe = new FlyingHeroesPipe();

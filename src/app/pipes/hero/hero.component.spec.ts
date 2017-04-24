@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HeroComponent } from './hero.component';
 import { By } from '@angular/platform-browser';
-import { Hero } from '../classes/hero';
+import { Hero } from '../../shared/classes/pipes/hero';
 
 let comp: HeroComponent;
 let fixture: ComponentFixture<HeroComponent>;

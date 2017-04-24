@@ -1,8 +1,4 @@
 <div style="display: inline" *ngFor="let b of buttons">
-  <button (click)="changeType(b)">{{b}}</button>
+  <button (click)="changeGroupVisible(b)">{{b}}</button>
 </div>
-<div *ngFor="let d of sortDivs" style="display: inline">
-  <div (click)="d.onClick()" [ngClass]="d.see ? 'box' : 'box2'">{{d.type}}</div>
-</div>
-<!--<pagination-controls (pageChange)="p = $event"></pagination-controls>-->
-<!--| paginate: { itemsPerPage: 14, currentPage: p }-->
+<app-my-box *ngFor="let i of groups" [group]="i"></app-my-box>

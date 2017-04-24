@@ -1,17 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.css'],
 })
-export class FileUploadComponent implements OnInit {
+export class FileUploadComponent {
   public data: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   public onChange(e): void {
     const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];

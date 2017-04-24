@@ -8,9 +8,9 @@ describe('FetchJsonPipe', () => {
   });
 
   // TODO - FetchJsonPipe tests
-  // it('heroes.json', () => {
-  //   pipe.transform('heroes.json');
-  //   expect(pipe.transform('heroes.json')).toBe('[ { "name": "Windstorm", "canFly": true }, ' +
+  // it('heroes.git', () => {
+  //   pipe.transform('heroes.git');
+  //   expect(pipe.transform('heroes.git')).toBe('[ { "name": "Windstorm", "canFly": true }, ' +
   //     '{ "name": "Bombasto", "canFly": false }, ' +
   //     '{ "name": "Magneto", "canFly": false }, ' +
   //     '{ "name": "Tornado", "canFly": true } ]');

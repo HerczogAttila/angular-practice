@@ -8,9 +8,12 @@ export class SearchService {
 
   constructor(private http: Http) {}
 
-  search(term: string): Observable<string[]> {
+  public search(term: string): Observable<string[]> {
+    console.log(term);
     return this.http
       .get('assets/words.json')
-      .map(response => response.json().filter(word => word.indexOf(term) !== -1).slice(0, 9) as string[]);
+      .map(response => response.json()
+      .filter(word => word.indexOf(term) !== -1)
+      .slice(0, 9) as string[]);
   }
 }

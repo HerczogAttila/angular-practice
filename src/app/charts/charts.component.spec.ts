@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ChartsComponent } from './charts.component';
 import { ChartsModule } from 'ng2-charts/';
+import '../../../node_modules/chart.js/dist/Chart.bundle.min.js';
 
 describe('ChartsComponent', () => {
   let component: ChartsComponent;
@@ -19,7 +20,7 @@ describe('ChartsComponent', () => {
     fixture.detectChanges();
   });
 
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });

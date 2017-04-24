@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { Http, Response, Headers, RequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
-import { GitRepo } from './json/git-repo';
-import { PolcTest } from './polc-test';
+import { GitRepo } from '../shared/classes/git/git-repo';
+import { PolcTest } from '../shared/classes/polc/polc-test';
 import { GitAuth } from '../../auth';
-import { GitTag } from './json/git-tag';
-import { TestCategory } from './test-category';
-import { GitUser } from './json/git-user';
+import { GitTag } from '../shared/classes/git/git-tag';
+import { TestCategory } from '../shared/classes/polc/test-category';
+import { GitUser } from '../shared/classes/git/git-user';
 
 @Component({
   selector: 'app-polc',
@@ -17,7 +17,7 @@ import { GitUser } from './json/git-user';
 
 export class PolcComponent implements OnInit {
   private name = 'HerczogAttila';
-  private headers = new Headers({ 'Content-Type': 'application/json', 'Authorization': 'token ' + GitAuth.token });
+  private headers = new Headers({ 'Content-Type': 'application/git', 'Authorization': 'token ' + GitAuth.token });
   private options = new RequestOptions({ headers: this.headers });
   private urlBase = 'https://api.github.com/';
   private urlUser = this.urlBase + 'users/';
@@ -35,12 +35,12 @@ export class PolcComponent implements OnInit {
 
   ngOnInit() {
     this.categories.push(new TestCategory('1. Lesson: Basic git commands', [
-      new PolcTest('Create an example GitHub project', this.isExampleProjectCreated),
-      new PolcTest('Commit to example project', this.isCommitToExampleProject)
+      new PolcTest(this.isExampleProjectCreated, 'Create an example GitHub project'),
+      new PolcTest(this.isCommitToExampleProject, 'Commit to example project')
     ]));
 
     this.categories.push(new TestCategory('2. Lesson: Using releases & tags', [
-      new PolcTest('Tag git branch', this.isTagGitBranch)
+      new PolcTest(this.isTagGitBranch, 'Tag git branch')
     ]));
   }
 

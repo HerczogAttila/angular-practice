@@ -1,17 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-file-download',
   templateUrl: './file-download.component.html',
   styleUrls: ['./file-download.component.css']
 })
-export class FileDownloadComponent implements OnInit {
+export class FileDownloadComponent {
   public status: string;
-
-  constructor() { }
-
-  ngOnInit() {
-  }
 
   public onSave(): void {
     const blob = new Blob(['Test data!'], { type: 'text/csv' });

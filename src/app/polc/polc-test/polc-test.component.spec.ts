@@ -3,7 +3,7 @@ import { PolcTestComponent } from './polc-test.component';
 import { FormsModule } from '@angular/forms';
 
 describe('PolcTestComponent', () => {
-  let component: PolcTestComponent;
+  let comp: PolcTestComponent;
   let fixture: ComponentFixture<PolcTestComponent>;
 
   beforeEach(async(() => {
@@ -19,11 +19,11 @@ describe('PolcTestComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PolcTestComponent);
-    component = fixture.componentInstance;
+    comp = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(comp).toBeTruthy();
   });
 });

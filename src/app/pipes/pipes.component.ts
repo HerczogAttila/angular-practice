@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Hero, HEROES } from './classes/hero';
+import { Hero, HEROES } from '../shared/classes/pipes/hero';
 
 @Component({
   selector: 'app-pipes',

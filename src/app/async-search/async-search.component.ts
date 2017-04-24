@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SearchService } from './search.service';
+import { SearchService } from '../shared/services/search.service';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/observable/of';
@@ -16,6 +16,7 @@ import 'rxjs/add/operator/switchMap';
 })
 export class AsyncSearchComponent implements OnInit {
   public words: Observable<string[]>;
+  public empty = Observable.of<string[]>([]);
   public term = '';
   private searchTerms = new Subject<string>();
 
@@ -25,13 +26,8 @@ export class AsyncSearchComponent implements OnInit {
     this.words = this.searchTerms
       .debounceTime(750)
       .distinctUntilChanged()
-      .switchMap(term => term
-        ? this.searchService.search(term)
-        : Observable.of<string[]>([]))
-      .catch(error => {
-        console.log(error);
-        return Observable.of<string[]>([]);
-      });
+      .switchMap(term => term ? this.searchService.search(term) : this.empty)
+      .catch(() => this.empty);
   }
 
   public onClick(term: string): void {

@@ -1,7 +1,9 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Address, Hero, states } from './data-model';
-import { HeroService } from './hero.service';
+import { states } from '../../shared/classes/reactive-forms/data-model';
+import { HeroService } from '../../shared/services/hero.service';
+import { Hero } from '../../shared/classes/reactive-forms/hero';
+import { Address } from '../../shared/classes/reactive-forms/address';
 
 @Component({
   selector: 'app-reactive-forms',
@@ -33,15 +35,6 @@ export class ReactiveFormsComponent implements OnInit, OnChanges {
       power: '',
       sidekick: ''
     });
-
-    // this.heroForm.setValue({
-    //   name:    this.hero.name,
-    //   address: this.hero.addresses[0] || new Address()
-    // });
-    //
-    // this.heroForm.patchValue({
-    //   name: this.hero.name
-    // });
   }
 
   ngOnChanges() {
@@ -67,20 +60,17 @@ export class ReactiveFormsComponent implements OnInit, OnChanges {
 
   onSubmit() {
     this.hero = this.prepareSaveHero();
-    this.heroService.updateHero(this.hero).subscribe(/* error handling */);
+    this.heroService.updateHero(this.hero).subscribe();
     this.ngOnChanges();
   }
 
   prepareSaveHero(): Hero {
     const formModel = this.heroForm.value;
 
-    // deep copy of form model lairs
     const secretLairsDeepCopy: Address[] = formModel.secretLairs.map(
       (address: Address) => Object.assign({}, address)
     );
 
-    // return new `Hero` object containing a combination of original hero value(s)
-    // and deep copies of changed form model values
     return {
       id: this.hero.id,
       name: formModel.name as string,

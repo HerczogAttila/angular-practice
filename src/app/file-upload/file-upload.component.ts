@@ -8,15 +8,15 @@ import { Component } from '@angular/core';
 export class FileUploadComponent {
   public data: string;
 
-  public onChange(e): void {
-    const file = e.dataTransfer ? e.dataTransfer.files[0] : e.target.files[0];
+  public onChange(event): void {
+    const file = event.dataTransfer ? event.dataTransfer.files[0] : event.target.files[0];
     const reader = new FileReader();
     reader.onload = this.handleReaderLoaded.bind(this);
     reader.readAsDataURL(file);
   }
 
-  private handleReaderLoaded(e): void {
-    let file = e.target.result;
+  private handleReaderLoaded(event): void {
+    let file = event.target.result;
     file = file.split(',')[1];
     this.data = 'data: ' + window.atob(file);
   }

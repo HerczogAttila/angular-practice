@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { FileUploadComponent } from './file-upload.component';
+import { Observable } from 'rxjs/Observable';
 
 describe('FileUploadComponent', () => {
   let comp: FileUploadComponent;
@@ -20,5 +21,29 @@ describe('FileUploadComponent', () => {
 
   it('should create', () => {
     expect(comp).toBeTruthy();
+  });
+
+  it('onChange data transfer', () => {
+    const event = { dataTransfer: {
+      files: [
+       new Blob(['Test data!'], { type: 'text/csv' })
+      ]
+    }};
+    comp.onChange(event);
+    Observable.timer(100).subscribe(() => {
+      expect(comp.data).toBe('data: Test data!');
+    });
+  });
+
+  it('onChange target.files', () => {
+    const event = { target: {
+      files: [
+        new Blob(['Test data!'], { type: 'text/csv' })
+      ]
+    }};
+    comp.onChange(event);
+    Observable.timer(100).subscribe(() => {
+      expect(comp.data).toBe('data: Test data!');
+    });
   });
 });

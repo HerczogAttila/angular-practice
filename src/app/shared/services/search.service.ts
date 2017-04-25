@@ -5,11 +5,9 @@ import 'rxjs/add/operator/filter';
 
 @Injectable()
 export class SearchService {
-
-  constructor(private http: Http) {}
+  constructor(private http: Http) { }
 
   public search(term: string): Observable<string[]> {
-    console.log(term);
     return this.http
       .get('assets/words.json')
       .map(response => response.json()

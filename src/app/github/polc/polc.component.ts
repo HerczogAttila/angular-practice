@@ -1,13 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
+import { PolcTest } from '../../shared/classes/polc/polc-test';
+import { TestCategory } from '../../shared/classes/polc/test-category';
+import { GitUser } from '../../shared/classes/git/git-user';
+import { GithubService } from '../../shared/services/github.service';
 import 'rxjs/add/operator/map';
-import { GitRepo } from '../shared/classes/git/git-repo';
-import { PolcTest } from '../shared/classes/polc/polc-test';
-import { GitAuth } from '../../auth';
-import { GitTag } from '../shared/classes/git/git-tag';
-import { TestCategory } from '../shared/classes/polc/test-category';
-import { GitUser } from '../shared/classes/git/git-user';
 
 @Component({
   selector: 'app-polc',
@@ -17,21 +13,13 @@ import { GitUser } from '../shared/classes/git/git-user';
 
 export class PolcComponent implements OnInit {
   private name = 'HerczogAttila';
-  private headers = new Headers({ 'Content-Type': 'application/git', 'Authorization': 'token ' + GitAuth.token });
-  private options = new RequestOptions({ headers: this.headers });
-  private urlBase = 'https://api.github.com/';
-  private urlUser = this.urlBase + 'users/';
   private categories: TestCategory[] = [];
   private project1 = 'example';
   // private project2 = 'TLOG16Java';
   // private project3 = 'TLOG16RS';
   private user: GitUser;
 
-  public static extractDataJson(response: Response) {
-    return JSON.parse(response.text());
-  }
-
-  constructor(private http: Http) { }
+  constructor(private githubService: GithubService) { }
 
   ngOnInit() {
     this.categories.push(new TestCategory('1. Lesson: Basic git commands', [
@@ -45,7 +33,7 @@ export class PolcComponent implements OnInit {
   }
 
   public onGetUser() {
-    this.getUser(this.name).subscribe((user) => {
+    this.githubService.getUser(this.name).subscribe((user) => {
       this.user = user;
     });
     for (const cat of this.categories) {
@@ -58,7 +46,7 @@ export class PolcComponent implements OnInit {
   // Topic: 1
   // Lesson: 1
   public isExampleProjectCreated(test: PolcTest): void {
-    this.getRepos(this.name)
+    this.githubService.getRepos(this.name)
       .subscribe(
         repos => {
           for (const repo of repos) {
@@ -75,7 +63,7 @@ export class PolcComponent implements OnInit {
         });
   }
   public isCommitToExampleProject(test: PolcTest): void {
-    this.getCommits(this.name, this.project1)
+    this.githubService.getCommits(this.name, this.project1)
       .subscribe(
         commits => {
           if (commits.length > 0) {
@@ -91,7 +79,7 @@ export class PolcComponent implements OnInit {
   }
   // Lesson: 2
   public isTagGitBranch(test: PolcTest) {
-    this.getTags(this.name, this.project1)
+    this.githubService.getTags(this.name, this.project1)
       .subscribe(
         tags => {
           if (tags.length > 0) {
@@ -106,21 +94,5 @@ export class PolcComponent implements OnInit {
         () => {
           test.pass = false;
         });
-  }
-  private getUser(name: string): Observable<GitUser> {
-    return this.http.get(this.urlUser + name, this.options)
-      .map(PolcComponent.extractDataJson);
-  }
-  private getRepos(name: string): Observable<GitRepo[]> {
-    return this.http.get(this.urlUser + name + '/repos', this.options)
-      .map(PolcComponent.extractDataJson);
-  }
-  private getCommits(name: string, repo: string): Observable<any[]> {
-    return this.http.get(this.urlBase + 'repos/' + name + '/' + repo + '/commits', this.options)
-      .map(PolcComponent.extractDataJson);
-  }
-  private getTags(name: string, repo: string): Observable<GitTag[]> {
-    return this.http.get(this.urlBase + 'repos/' + name + '/' + repo + '/tags', this.options)
-      .map(PolcComponent.extractDataJson);
   }
 }

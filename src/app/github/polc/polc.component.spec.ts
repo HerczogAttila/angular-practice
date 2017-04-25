@@ -1,10 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { PolcComponent } from './polc.component';
 import { FormsModule } from '@angular/forms';
 import { PolcTestComponent } from './polc-test/polc-test.component';
 import { BaseRequestOptions, Http } from '@angular/http';
 import { MockBackend } from '@angular/http/testing';
+import { GithubService } from '../../shared/services/github.service';
 
 describe('PolcComponent', () => {
   let component: PolcComponent;
@@ -25,6 +25,7 @@ describe('PolcComponent', () => {
       ],
       providers: [
         { provide: Http, useValue: mockHttpProvider },
+        GithubService,
         MockBackend,
         BaseRequestOptions
       ]

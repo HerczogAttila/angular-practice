@@ -7,8 +7,8 @@ import { AnimationComponent } from './animation/animation.component';
 import { Ng2PaginationModule } from 'ng2-pagination';
 import { NavigationComponent } from './navigation/navigation.component';
 import { routes } from './app.router';
-import { PolcComponent } from './polc/polc.component';
-import { PolcTestComponent } from './polc/polc-test/polc-test.component';
+import { PolcComponent } from './github/polc/polc.component';
+import { PolcTestComponent } from './github/polc/polc-test/polc-test.component';
 import { GithubComponent } from './github/github.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileDownloadComponent } from './file-download/file-download.component';
@@ -31,6 +31,7 @@ import { SelectModule } from 'ng2-select';
 import { Multiselect2Component } from './multiselect2/multiselect2.component';
 import { HeroComponent } from './pipes/hero/hero.component';
 import { MyBoxComponent } from './animation/my-box/my-box.component';
+import { GithubService } from './shared/services/github.service';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { MyBoxComponent } from './animation/my-box/my-box.component';
   providers: [
     HeroService,
     SearchService,
+    GithubService,
   ],
   bootstrap: [AppComponent]
 })

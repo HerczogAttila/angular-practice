@@ -1,59 +1,41 @@
-import { Component, OnInit } from '@angular/core';
-import { Http, Response, Headers, RequestOptions } from '@angular/http';
+import { Component } from '@angular/core';
 import { GitUser } from '../shared/classes/git/git-user';
 import { GitRepo } from '../shared/classes/git/git-repo';
-import { GitAuth } from '../../auth';
-import { PolcComponent } from '../polc/polc.component';
-import { Observable } from 'rxjs/Observable';
+import { GithubService } from '../shared/services/github.service';
 
 @Component({
   selector: 'app-github',
   templateUrl: './github.component.html',
   styleUrls: ['./github.component.css']
 })
-export class GithubComponent implements OnInit {
-  private name = 'HerczogAttila';
-  private headers = new Headers({ 'Content-Type': 'application/git', 'Authorization': 'token ' + GitAuth.token });
-  private options = new RequestOptions({ headers: this.headers });
-  private urlBase = 'https://api.github.com/';
-  private urlHello = this.urlBase + 'zen';
-  private urlUser = this.urlBase + 'users/';
-  private answerText: string;
-  private user: GitUser;
-  private repos: GitRepo[] = [];
+export class GithubComponent {
+  public name = 'HerczogAttila';
+  public answerText: string;
+  public user: GitUser;
+  public repos: GitRepo[] = [];
 
-  private static extractDataText(response: Response): string {
-    return response.text();
+  constructor(private githubService: GithubService) { }
+
+  public onHello(): void {
+    this.githubService.zen().subscribe(this.setAnswerText);
   }
 
-  constructor(private http: Http) { }
+  private setAnswerText(message: string) {
+    this.answerText = message;
+  }
 
-  ngOnInit() {
+  public onGetUser(): void {
+    this.githubService.getUser(this.name).subscribe(this.setUser);
+    this.githubService.getRepos(this.name).subscribe(this.setRepos);
   }
-  public onHello() {
-    this.getHello().subscribe((data) => {
-      this.answerText = data;
-    });
-  }
-  public onGetUser() {
-    this.getUser(this.name).subscribe((user) => {
-      this.user = user;
-    });
 
-    this.getRepos(this.name).subscribe((repos) => {
-      this.repos = repos;
-    });
+  private setUser(user: GitUser): void {
+    console.log(user);
+    this.user = user;
   }
-  private getHello(): Observable<string> {
-    return this.http.get(this.urlHello, this.options)
-      .map(GithubComponent.extractDataText);
-  }
-  private getUser(name: string): Observable<GitUser> {
-    return this.http.get(this.urlUser + name, this.options)
-      .map(PolcComponent.extractDataJson);
-  }
-  private getRepos(name: string): Observable<GitRepo[]> {
-    return this.http.get(this.urlUser + name + '/repos', this.options)
-      .map(PolcComponent.extractDataJson);
+
+  private setRepos(repos: GitRepo[]): void {
+    console.log(repos);
+    this.repos = repos;
   }
 }

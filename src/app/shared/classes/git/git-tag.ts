@@ -1,4 +1,4 @@
 
 export class GitTag {
-  public name: string;
+  constructor(public name = '') { }
 }

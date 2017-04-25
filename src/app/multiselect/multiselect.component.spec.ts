@@ -3,7 +3,7 @@ import { MultiselectComponent } from './multiselect.component';
 import { SelectModule } from 'ng2-select';
 
 describe('MultiselectComponent', () => {
-  let component: MultiselectComponent;
+  let comp: MultiselectComponent;
   let fixture: ComponentFixture<MultiselectComponent>;
 
   beforeEach(async(() => {
@@ -15,11 +15,16 @@ describe('MultiselectComponent', () => {
 
   beforeEach(() => {
     fixture = TestBed.createComponent(MultiselectComponent);
-    component = fixture.componentInstance;
+    comp = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(comp).toBeTruthy();
+  });
+
+  it('refresh value', () => {
+    comp.refreshValue('{ \'Athens\' \'Amsterdam\' \'Bremen\' }');
+    expect(comp.value).toBe('{ \'Athens\' \'Amsterdam\' \'Bremen\' }');
   });
 });

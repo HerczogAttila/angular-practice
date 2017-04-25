@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-multiselect',
   templateUrl: './multiselect.component.html',
   styleUrls: ['./multiselect.component.css']
 })
-export class MultiselectComponent implements OnInit {
+export class MultiselectComponent {
   public items = ['Amsterdam', 'Antwerp', 'Athens', 'Barcelona',
     'Berlin', 'Birmingham', 'Bradford', 'Bremen', 'Brussels', 'Bucharest',
     'Budapest', 'Cologne', 'Copenhagen', 'Dortmund', 'Dresden', 'Dublin',
@@ -17,12 +17,7 @@ export class MultiselectComponent implements OnInit {
     'The Hague', 'Turin', 'Valencia', 'Vienna', 'Vilnius', 'Warsaw', 'Zagreb',
   ];
 
-  private value = { };
-
-  constructor() { }
-
-  ngOnInit() {
-  }
+  public value = { };
 
   public refreshValue(value: any): void {
     this.value = value;

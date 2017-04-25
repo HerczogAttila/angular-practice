@@ -1,7 +1,7 @@
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { ModuleWithProviders } from '@angular/core';
 import { AnimationComponent } from './animation/animation.component';
-import { PolcComponent } from './polc/polc.component';
+import { PolcComponent } from './github/polc/polc.component';
 import { GithubComponent } from './github/github.component';
 import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileDownloadComponent } from './file-download/file-download.component';

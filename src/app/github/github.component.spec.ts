@@ -1,38 +1,70 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { GithubComponent } from './github.component';
 import { FormsModule } from '@angular/forms';
-import { BaseRequestOptions, Http } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
+import { BaseRequestOptions, Http, Response, ResponseOptions } from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+import { GithubService } from '../shared/services/github.service';
+import { GitUser } from '../shared/classes/git/git-user';
+import { GitRepo } from '../shared/classes/git/git-repo';
+import 'rxjs/add/operator/map';
 
 describe('GithubComponent', () => {
-  let component: GithubComponent;
+  let comp: GithubComponent;
   let fixture: ComponentFixture<GithubComponent>;
-  const mockHttpProvider = {
-    deps: [ MockBackend, BaseRequestOptions ],
-    useFactory: (backend: MockBackend, defaultOptions: BaseRequestOptions) => {
-      return new Http(backend, defaultOptions);
-    }
-  };
+  let mockBackend: MockBackend;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [ FormsModule ],
       declarations: [ GithubComponent ],
       providers: [
-        { provide: Http, useValue: mockHttpProvider },
+        GithubService,
         MockBackend,
-        BaseRequestOptions
+        BaseRequestOptions, {
+          provide: Http,
+          useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
+          deps: [MockBackend, BaseRequestOptions]
+        },
       ]
     });
   }));
 
   beforeEach(() => {
+    mockBackend = TestBed.get(MockBackend);
     fixture = TestBed.createComponent(GithubComponent);
-    component = fixture.componentInstance;
+    comp = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(comp).toBeTruthy();
   });
+
+  it('onHello', async(() => {
+    const sendData = 'zen';
+    const response = new Response(new ResponseOptions({ body: sendData }));
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockRespond(response);
+    });
+
+    comp.onHello();
+    // TODO: expects
+  }));
+
+  it('onGetUser', async(() => {
+    const sendData = new GitUser('Attila');
+    const responses = [];
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify(sendData) })));
+
+    const sendData2 = [new GitRepo('tlog16-angular-cli')];
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify(sendData2) })));
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockRespond(responses.shift());
+    });
+
+    comp.onGetUser();
+    // TODO: expects
+  }));
 });

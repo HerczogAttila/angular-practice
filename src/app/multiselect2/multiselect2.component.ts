@@ -1,11 +1,11 @@
-import { Component, ElementRef, OnInit } from '@angular/core';
+import { Component, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-multiselect2',
   templateUrl: './multiselect2.component.html',
   styleUrls: ['./multiselect2.component.css']
 })
-export class Multiselect2Component implements OnInit {
+export class Multiselect2Component {
   public query = '';
   public countries = [ 'Albania', 'Andorra', 'Armenia', 'Austria', 'Azerbaijan', 'Belarus',
     'Belgium', 'Bosnia & Herzegovina', 'Bulgaria', 'Croatia', 'Cyprus',
@@ -23,20 +23,17 @@ export class Multiselect2Component implements OnInit {
     this.elementRef = myElement;
   }
 
-  ngOnInit() {
-  }
-
-  select(item) {
+  public select(item: string): void {
     this.selected.push(item);
     this.query = '';
     this.filteredList = [];
   }
 
-  remove(item) {
+  public remove(item: string): void {
     this.selected.splice(this.selected.indexOf(item), 1);
   }
 
-  filter() {
+  public filter(): void {
     if (this.query !== '') {
       this.filteredList = this.countries.filter(function(el) {
         return el.toLowerCase().indexOf(this.query.toLowerCase()) > -1;

@@ -10,25 +10,22 @@ import 'rxjs/add/operator/finally';
   styleUrls: ['./hero-list.component.css']
 })
 export class HeroListComponent implements OnInit {
-  heroes: Observable<Hero[]>;
-  isLoading = false;
-  selectedHero: Hero;
+  public heroes: Observable<Hero[]>;
+  public isLoading = false;
+  public selectedHero: Hero;
 
   constructor(private heroService: HeroService) { }
 
   ngOnInit() { this.getHeroes(); }
 
-  getHeroes() {
+  public getHeroes(): void {
     this.isLoading = true;
     this.heroes = this.heroService.getHeroes()
       .finally(() => this.isLoading = false);
     this.selectedHero = undefined;
   }
 
-  select(hero: Hero) { this.selectedHero = hero; }
+  public select(hero: Hero): void {
+    this.selectedHero = hero;
+  }
 }
-
-/* Copyright 2017 Google Inc. All Rights Reserved.
- Use of this source code is governed by an MIT-style license that
- can be found in the LICENSE file at http://angular.io/license
- */

@@ -12,12 +12,12 @@ import 'rxjs/add/operator/map';
 })
 
 export class PolcComponent implements OnInit {
-  private name = 'HerczogAttila';
-  private categories: TestCategory[] = [];
-  private project1 = 'example';
+  public name = 'HerczogAttila';
+  public categories: TestCategory[] = [];
+  public project1 = 'example';
   // private project2 = 'TLOG16Java';
   // private project3 = 'TLOG16RS';
-  private user: GitUser;
+  public user: GitUser;
 
   constructor(private githubService: GithubService) { }
 
@@ -32,7 +32,7 @@ export class PolcComponent implements OnInit {
     ]));
   }
 
-  public onGetUser() {
+  public onGetUser(): void {
     this.githubService.getUser(this.name).subscribe((user) => {
       this.user = user;
     });
@@ -78,7 +78,7 @@ export class PolcComponent implements OnInit {
         });
   }
   // Lesson: 2
-  public isTagGitBranch(test: PolcTest) {
+  public isTagGitBranch(test: PolcTest): void {
     this.githubService.getTags(this.name, this.project1)
       .subscribe(
         tags => {

@@ -21,11 +21,12 @@ export class AnimationComponent implements OnInit {
     }
   }
 
+  // TODO: rewrite
   // public changeGroupVisible(group: number): void {
-  //   const divs = this.divs.filter(box => {
-  //     return box.group === group;
+  //   const divs = this.groups.filter(box => {
+  //     return box. === group;
   //   });
-  //   for (const b of divs) {
+  //   for (const b of groups) {
   //     b.toggleVisible();
   //   }
   // }

@@ -35,14 +35,15 @@ describe('AsyncSearchComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', async(() => {
     expect(comp).toBeTruthy();
-  });
+  }));
 
-  it('searchTerms', () => {
+  it('onSearch', async(() => {
     comp.term = 'asd';
     comp.onSearch();
-  });
+    expect(comp.term).toBe('asd');
+  }));
 
   it('onClick', () => {
     comp.term = 'asd';

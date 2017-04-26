@@ -40,7 +40,7 @@ function createComponent() {
   fixture.detectChanges();
 
   return fixture.whenStable().then(() => {
-    comp.hero = new Hero();
+    comp.hero = new Hero('Deadpool');
     fixture.detectChanges();
     page = new Page();
   });

@@ -7,5 +7,5 @@ import { Hero } from '../../shared/classes/pipes/hero';
   styleUrls: ['./hero.component.css']
 })
 export class HeroComponent {
-  @Input() hero: Hero;
+  @Input() hero = new Hero();
 }

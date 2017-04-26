@@ -2,19 +2,18 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { PolcComponent } from './polc.component';
 import { FormsModule } from '@angular/forms';
 import { PolcTestComponent } from './polc-test/polc-test.component';
-import { BaseRequestOptions, Http } from '@angular/http';
-import { MockBackend } from '@angular/http/testing';
+import { BaseRequestOptions, Http, ResponseOptions, Response } from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 import { GithubService } from '../../shared/services/github.service';
+import { GitUser } from '../../shared/classes/git/git-user';
+import { GitRepo } from '../../shared/classes/git/git-repo';
+import { GitCommit } from '../../shared/classes/git/git-commit';
+import { GitTag } from '../../shared/classes/git/git-tag';
 
 describe('PolcComponent', () => {
-  let component: PolcComponent;
+  let comp: PolcComponent;
   let fixture: ComponentFixture<PolcComponent>;
-  const mockHttpProvider = {
-    deps: [ MockBackend, BaseRequestOptions ],
-    useFactory: (backend: MockBackend, defaultOptions: BaseRequestOptions) => {
-      return new Http(backend, defaultOptions);
-    }
-  };
+  let mockBackend: MockBackend;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -24,21 +23,98 @@ describe('PolcComponent', () => {
         PolcTestComponent,
       ],
       providers: [
-        { provide: Http, useValue: mockHttpProvider },
         GithubService,
         MockBackend,
-        BaseRequestOptions
+        BaseRequestOptions, {
+          provide: Http,
+          useFactory: (backend, defaultOptions) => new Http(backend, defaultOptions),
+          deps: [MockBackend, BaseRequestOptions]
+        },
       ]
     });
   }));
 
   beforeEach(() => {
+    mockBackend = TestBed.get(MockBackend);
     fixture = TestBed.createComponent(PolcComponent);
-    component = fixture.componentInstance;
+    comp = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    expect(comp).toBeTruthy();
   });
+
+  it('onGetUser pass', async(() => {
+    const responses = [];
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify(new GitUser('Attila')) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([new GitRepo('example')]) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([new GitCommit()]) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([new GitTag('0.1.0')]) })));
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockRespond(responses.shift());
+    });
+
+    comp.name = 'Attila';
+    comp.onGetUser();
+    expect(comp.user.login).toBe('Attila');
+    expect(comp.categories[0].tests[0].pass).toBe(true);
+    expect(comp.categories[0].tests[1].pass).toBe(true);
+    expect(comp.categories[1].tests[0].pass).toBe(true);
+  }));
+
+  it('onGetUser missing', async(() => {
+    const responses = [];
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify(new GitUser('Attila')) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([new GitRepo('tlog16-angular-cli')]) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([]) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([]) })));
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockRespond(responses.shift());
+    });
+
+    comp.name = 'Attila';
+    comp.onGetUser();
+    expect(comp.user.login).toBe('Attila');
+    expect(comp.categories[0].tests[0].pass).toBe(false);
+    expect(comp.categories[0].tests[1].pass).toBe(false);
+    expect(comp.categories[1].tests[0].pass).toBe(false);
+  }));
+
+  it('onGetUser error', async(() => {
+    const responses = [];
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify(new GitUser('Attila')) })));
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockRespond(responses.shift());
+    });
+
+    comp.name = 'Attila';
+    comp.onGetUser();
+    expect(comp.user.login).toBe('Attila');
+    expect(comp.categories[0].tests[0].pass).toBe(false);
+    expect(comp.categories[0].tests[1].pass).toBe(false);
+    expect(comp.categories[1].tests[0].pass).toBe(false);
+  }));
+
+  it('onGetUser wrong', async(() => {
+    const responses = [];
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify(new GitUser('Attila')) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([new GitRepo('tlog16-angular-cli')]) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([]) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([new GitTag('wrong')]) })));
+
+    mockBackend.connections.subscribe((connection: MockConnection) => {
+      connection.mockRespond(responses.shift());
+    });
+
+    comp.name = 'Attila';
+    comp.onGetUser();
+    expect(comp.user.login).toBe('Attila');
+    expect(comp.categories[0].tests[0].pass).toBe(false);
+    expect(comp.categories[0].tests[1].pass).toBe(false);
+    expect(comp.categories[1].tests[0].pass).toBe(false);
+  }));
 });

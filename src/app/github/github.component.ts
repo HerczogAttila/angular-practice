@@ -17,25 +17,11 @@ export class GithubComponent {
   constructor(private githubService: GithubService) { }
 
   public onHello(): void {
-    this.githubService.zen().subscribe(this.setAnswerText);
-  }
-
-  private setAnswerText(message: string) {
-    this.answerText = message;
+    this.githubService.zen().subscribe(message => this.answerText = message);
   }
 
   public onGetUser(): void {
-    this.githubService.getUser(this.name).subscribe(this.setUser);
-    this.githubService.getRepos(this.name).subscribe(this.setRepos);
-  }
-
-  private setUser(user: GitUser): void {
-    console.log(user);
-    this.user = user;
-  }
-
-  private setRepos(repos: GitRepo[]): void {
-    console.log(repos);
-    this.repos = repos;
+    this.githubService.getUser(this.name).subscribe(user => this.user = user);
+    this.githubService.getRepos(this.name).subscribe(repos => this.repos = repos);
   }
 }

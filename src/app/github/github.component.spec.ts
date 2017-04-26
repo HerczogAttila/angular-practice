@@ -49,22 +49,19 @@ describe('GithubComponent', () => {
     });
 
     comp.onHello();
-    // TODO: expects
+    expect(comp.answerText).toBe('zen');
   }));
 
   it('onGetUser', async(() => {
-    const sendData = new GitUser('Attila');
     const responses = [];
-    responses.push(new Response(new ResponseOptions({ body: JSON.stringify(sendData) })));
-
-    const sendData2 = [new GitRepo('tlog16-angular-cli')];
-    responses.push(new Response(new ResponseOptions({ body: JSON.stringify(sendData2) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify(new GitUser('Attila')) })));
+    responses.push(new Response(new ResponseOptions({ body: JSON.stringify([new GitRepo('tlog16-angular-cli')]) })));
 
     mockBackend.connections.subscribe((connection: MockConnection) => {
       connection.mockRespond(responses.shift());
     });
 
     comp.onGetUser();
-    // TODO: expects
+    expect(comp.user.login).toBe('Attila');
   }));
 });

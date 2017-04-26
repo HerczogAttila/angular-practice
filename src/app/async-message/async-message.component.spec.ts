@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AsyncMessageComponent } from './async-message.component';
 
 describe('AsyncMessageComponent', () => {
@@ -18,7 +17,7 @@ describe('AsyncMessageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create', async(() => {
     expect(comp).toBeTruthy();
-  });
+  }));
 });

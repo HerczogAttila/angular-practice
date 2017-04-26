@@ -14,9 +14,6 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { FileDownloadComponent } from './file-download/file-download.component';
 import { ChartsModule } from 'ng2-charts';
 import { ChartsComponent } from './charts/charts.component';
-import { ReactiveFormsComponent } from './hero-list/reactive-forms/reactive-forms.component';
-import { HeroService } from './shared/services/hero.service';
-import { HeroListComponent } from './hero-list/hero-list.component';
 import { PipesComponent } from './pipes/pipes.component';
 import { ExponentialStrengthPipe } from './shared/pipes/exponential-strength.pipe';
 import { FlyingHeroesPipe } from './shared/pipes/flying-heroes.pipe';
@@ -44,8 +41,6 @@ import { GithubService } from './shared/services/github.service';
     FileUploadComponent,
     FileDownloadComponent,
     ChartsComponent,
-    ReactiveFormsComponent,
-    HeroListComponent,
     PipesComponent,
     ExponentialStrengthPipe,
     FlyingHeroesPipe,
@@ -70,7 +65,6 @@ import { GithubService } from './shared/services/github.service';
     SelectModule,
   ],
   providers: [
-    HeroService,
     SearchService,
     GithubService,
   ],

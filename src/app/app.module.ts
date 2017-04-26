@@ -29,6 +29,7 @@ import { Multiselect2Component } from './multiselect2/multiselect2.component';
 import { HeroComponent } from './pipes/hero/hero.component';
 import { MyBoxComponent } from './animation/my-box/my-box.component';
 import { GithubService } from './shared/services/github.service';
+import { NinjaComponent } from './ninja/ninja.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { GithubService } from './shared/services/github.service';
     Multiselect2Component,
     HeroComponent,
     MyBoxComponent,
+    NinjaComponent,
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,7 @@ import { AsyncSearchComponent } from './async-search/async-search.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { MultiselectComponent } from './multiselect/multiselect.component';
 import { Multiselect2Component } from './multiselect2/multiselect2.component';
-import { NinjaComponent } from "./ninja/ninja.component";
+import { NinjaComponent } from './ninja/ninja.component';
 
 export const router: Routes = [
   { path: '', redirectTo: 'animation', pathMatch: 'full' },

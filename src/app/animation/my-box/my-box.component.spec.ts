@@ -21,16 +21,4 @@ describe('MyBoxComponent', () => {
   it('should create', () => {
     expect(comp).toBeTruthy();
   });
-
-  it('toggle visible false', () => {
-    comp.visible = true;
-    comp.toggleVisible();
-    expect(comp.visible).toBe(false);
-  });
-
-  it('toggle visible true', () => {
-    comp.visible = false;
-    comp.toggleVisible();
-    expect(comp.visible).toBe(true);
-  });
 });

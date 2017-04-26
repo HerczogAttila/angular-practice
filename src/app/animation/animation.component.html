@@ -1,4 +1,4 @@
-<div style="display: inline" *ngFor="let b of buttons">
-  <button (click)="changeGroupVisible(b)">{{b}}</button>
+<div class="inline">
+  <button *ngFor="let b of buttons" (click)="toggleGroupVisible(b)">{{ b }}</button>
 </div>
-<app-my-box *ngFor="let i of groups" [group]="i"></app-my-box>
+<app-my-box *ngFor="let i of boxes" [data]="i"></app-my-box>

@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { MyBoxData } from '../../shared/classes/animation/my-box-data';
 
 @Component({
   selector: 'app-my-box',
@@ -6,10 +7,5 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./my-box.component.css']
 })
 export class MyBoxComponent {
-  @Input() public group = 1;
-  @Input() public visible = true;
-
-  public toggleVisible(): void {
-    this.visible = !this.visible;
-  }
+  @Input() public data = new MyBoxData();
 }

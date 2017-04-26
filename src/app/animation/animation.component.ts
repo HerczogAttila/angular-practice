@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { MyBoxData } from '../shared/classes/animation/my-box-data';
 
-const count = 3;
+const groupCount = 3;
 
 @Component({
   selector: 'app-animation',
@@ -10,24 +11,23 @@ const count = 3;
 
 export class AnimationComponent implements OnInit {
   public buttons: number[] = [];
-  public groups: number[] = [];
+  public boxes: MyBoxData[] = [];
 
   ngOnInit() {
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < groupCount; i++) {
       this.buttons.push(i);
     }
     for (let i = 0; i < 100; i++) {
-      this.groups.push(i % count);
+      this.boxes.push(new MyBoxData(i % groupCount));
     }
   }
 
-  // TODO: rewrite
-  // public changeGroupVisible(group: number): void {
-  //   const divs = this.groups.filter(box => {
-  //     return box. === group;
-  //   });
-  //   for (const b of groups) {
-  //     b.toggleVisible();
-  //   }
-  // }
+  public toggleGroupVisible(group: number): void {
+    const divs = this.boxes.filter(box => {
+      return box.group === group;
+    });
+    for (const b of divs) {
+      b.toggleVisible();
+    }
+  }
 }
